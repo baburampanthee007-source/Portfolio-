@@ -1,232 +1,558 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ne">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nepali Folk Singer</title>
-<style>
-  /* Reset */
-  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; font-family: 'Poppins', sans-serif; }
-  body { overflow-x:hidden; color:#fff; }
-  a { text-decoration:none; color:inherit; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>बाबुराम पन्थी — नेपाली लोक दोहोरी गायक</title>
+  <meta name="description" content="बाबुराम पन्थी — नेपाली लोक-दोहोरी गायक। नयाँ गीत, भिडियो, कार्यक्रम र बुकिङ जानकारी।">
+  <meta property="og:title" content="बाबुराम पन्थी — आधिकारिक वेबसाइट">
+  <meta property="og:description" content="नेपाली लोक-दोहोरी गीतहरू, भिडियोहरू र कार्यक्रमहरू।">
+  <!-- Replace with hero image raw GitHub URL -->
+  <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/images/hero.jpg -->
+  <meta property="og:image" content="<!-- Replace with hero image URL -->">
+  <meta name="twitter:card" content="summary_large_image">
 
-  /* Gradients and colors */
-  :root {
-    --primary-gradient: linear-gradient(135deg, #ff6a00, #ee0979);
-    --secondary-gradient: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
-    --card-bg: rgba(255,255,255,0.05);
-  }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  /* Navigation */
-  nav {
-    position: sticky; top:0; width:100%; background:rgba(0,0,0,0.6); display:flex; justify-content:center; z-index:1000; backdrop-filter: blur(10px);
-  }
-  nav ul { display:flex; list-style:none; gap:2rem; padding:1rem; }
-  nav ul li { cursor:pointer; position:relative; }
-  nav ul li::after { content:''; position:absolute; width:0; height:2px; background:#fff; left:0; bottom:-5px; transition:0.3s; }
-  nav ul li:hover::after, nav ul li.active::after { width:100%; }
+  <style>
+    :root{
+      --accent:#ff7a00; /* orange */
+      --bg:#ffffff;
+      --dark:#1f1f1f;
+      --muted:#666;
+      --max-width:1100px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:var(--dark);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
+    header{
+      position:sticky;top:0;z-index:60;
+      backdrop-filter: blur(6px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
+      border-bottom:1px solid rgba(0,0,0,0.04);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{height:44px;width:44px;border-radius:8px;object-fit:cover}
+    .brand h1{font-family:Playfair Display, serif;margin:0;font-size:1.1rem;color:var(--dark)}
+    nav ul{display:flex;gap:14px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
+    nav a:hover{background:rgba(255,122,0,0.08);color:var(--accent)}
+    /* Hero */
+    .hero{
+      min-height:70vh;
+      display:grid;
+      grid-template-columns:1fr;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:28px;
+    }
+    .hero .bg{
+      position:absolute;inset:0;background-size:cover;background-position:center;
+      transform:scale(1.03);
+      transition:transform 8s linear;
+      filter:saturate(1.05) contrast(0.95);
+    }
+    .hero:hover .bg{transform:scale(1.08)}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));}
+    .hero .content{position:relative;z-index:3;padding:60px 18px;color:white}
+    .tagline{font-family:Playfair Display, serif;font-size:1.8rem;margin:0 0 12px}
+    .sub{font-size:1rem;color:rgba(255,255,255,0.95);margin-bottom:18px}
+    .hero .controls{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:var(--accent);color:white;padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 6px 18px rgba(255,122,0,0.12);
+    }
+    .btn.secondary{background:rgba(255,255,255,0.12);color:white;border:1px solid rgba(255,255,255,0.12)}
+    /* Featured audio */
+    .audio-card{background:rgba(255,255,255,0.95);padding:12px;border-radius:10px;color:var(--dark);display:flex;gap:12px;align-items:center;max-width:640px}
+    .audio-card img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+    .track-info{flex:1}
+    .track-title{font-weight:700;margin:0}
+    .track-sub{color:var(--muted);font-size:0.9rem;margin-top:6px}
+    audio{width:100%;outline:none}
+    /* Sections */
+    section{padding:48px 0}
+    h2.section-title{font-family:Playfair Display, serif;font-size:1.5rem;margin:0 0 16px}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#fff;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(15,15,15,0.04);overflow:hidden}
+    /* About timeline */
+    .timeline{display:flex;flex-direction:column;gap:10px;padding-left:10px;border-left:3px solid rgba(0,0,0,0.06)}
+    .timeline-item{padding:8px 0;opacity:0;transform:translateY(10px);transition:all .6s ease}
+    .timeline-item.visible{opacity:1;transform:none}
+    /* Discography */
+    .album{border-radius:8px;overflow:hidden;position:relative;cursor:pointer}
+    .album img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .25s ease,box-shadow .25s ease}
+    .album:hover img{transform:scale(1.04);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+    .album .meta{padding:10px}
+    .album .meta h3{margin:0;font-size:1rem}
+    /* Video thumbnails */
+    .video-thumb{position:relative;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden}
+    .video-thumb iframe{position:absolute;inset:0;width:100%;height:100%}
+    /* Gallery */
+    .masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .masonry img{width:100%;height:180px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
+    /* Events */
+    .event-card{display:flex;gap:12px;align-items:center}
+    .event-date{min-width:84px;text-align:center;padding:8px;border-radius:8px;background:rgba(255,122,0,0.08);font-weight:700}
+    /* News */
+    .news-card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);font-size:1rem}
+    .footer{padding:30px 0;background:#fafafa;border-top:1px solid rgba(0,0,0,0.03);margin-top:24px}
+    /* Responsive */
+    @media (max-width:900px){
+      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+      .masonry{grid-template-columns:repeat(2,1fr)}
+      .hero{min-height:56vh}
+    }
+    @media (max-width:600px){
+      nav ul{display:none}
+      .brand h1{font-size:1rem}
+      .grid.cols-3{grid-template-columns:1fr}
+      .masonry{grid-template-columns:1fr}
+    }
 
-  /* Sections */
-  section { min-height:100vh; padding:5rem 2rem; position:relative; display:flex; justify-content:center; align-items:center; flex-direction:column; }
-  h1, h2 { margin-bottom:1rem; }
-  p { max-width:800px; text-align:center; margin-bottom:2rem; }
-
-  /* Hero */
-  #home {
-    background: url('hero.jpg') center/cover no-repeat;
-    position:relative;
-  }
-  #home::before {
-    content:''; position:absolute; inset:0; background:var(--primary-gradient); opacity:0.5; mix-blend-mode: overlay;
-  }
-  #home .content { position:relative; text-align:center; animation:fadeInUp 2s ease forwards; }
-  #home h1 { font-size:3rem; background:linear-gradient(90deg,#ff6a00,#ee0979); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  #home p { font-size:1.2rem; color:#fff; }
-
-  /* Bio */
-  #bio { background:var(--secondary-gradient); text-align:center; }
-  #bio img { width:200px; border-radius:50%; margin-bottom:1rem; transition:transform 0.5s; }
-  #bio img:hover { transform:scale(1.05); }
-  .fade-slide { opacity:0; transform:translateY(50px); transition:1s ease; }
-
-  /* Music */
-  #music { background:#111; display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
-  .track { background:var(--card-bg); padding:1rem; border-radius:1rem; width:250px; text-align:center; transition:transform 0.3s, box-shadow 0.3s; }
-  .track:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
-  .progress { width:100%; height:5px; background:rgba(255,255,255,0.2); border-radius:5px; overflow:hidden; margin:0.5rem 0; }
-  .progress-bar { width:0%; height:100%; background:linear-gradient(90deg,#ff6a00,#ee0979); }
-
-  /* Videos */
-  #videos { background:#222; display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
-  .video-card { width:300px; border-radius:1rem; overflow:hidden; background:var(--card-bg); transition:transform 0.3s, box-shadow 0.3s; }
-  .video-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
-  .video-card iframe { width:100%; height:170px; display:block; }
-
-  /* Albums & Gallery */
-  #albums, #gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; }
-  .grid-item { position:relative; overflow:hidden; border-radius:1rem; cursor:pointer; }
-  .grid-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-  .grid-item:hover img { transform:scale(1.1); }
-
-  /* Lightbox */
-  .lightbox { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
-  .lightbox img { max-width:90%; max-height:90%; border-radius:1rem; }
-  .lightbox .close { position:absolute; top:2rem; right:2rem; font-size:2rem; cursor:pointer; color:#fff; }
-
-  /* Contact */
-  #contact { background:var(--primary-gradient); text-align:center; }
-  #contact a { display:inline-block; margin:0.5rem; padding:0.5rem 1rem; border-radius:0.5rem; background:rgba(255,255,255,0.2); transition:0.3s; }
-  #contact a:hover { background:rgba(255,255,255,0.5); }
-
-  /* Animations */
-  @keyframes fadeInUp { 0% { opacity:0; transform:translateY(50px); } 100% { opacity:1; transform:translateY(0); } }
-</style>
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;padding:20px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
+    .lightbox.open{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:100%;max-height:85vh;border-radius:10px}
+  </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li class="nav-link active" data-target="#home">Home</li>
-    <li class="nav-link" data-target="#bio">Bio</li>
-    <li class="nav-link" data-target="#music">Music</li>
-    <li class="nav-link" data-target="#videos">Videos</li>
-    <li class="nav-link" data-target="#albums">Albums</li>
-    <li class="nav-link" data-target="#gallery">Gallery</li>
-    <li class="nav-link" data-target="#contact">Contact</li>
-  </ul>
-</nav>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Replace with small logo/portrait raw GitHub URL -->
+        <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/images/avatar.jpg -->
+        <img src="<!-- Replace with small logo or avatar URL -->" alt="बाबुराम पन्थी">
+        <h1>बाबुराम पन्थी</h1>
+      </div>
 
-<!-- Hero -->
-<section id="home">
-  <div class="content">
-    <h1>Baburam Panthi</h1>
-    <p>Nepali Folk & Dohori Singer</p>
+      <nav>
+        <ul>
+          <li><a href="#home">गृह</a></li>
+          <li><a href="#about">बारेमा</a></li>
+          <li><a href="#music">संगीत</a></li>
+          <li><a href="#videos">भिडियो</a></li>
+          <li><a href="#gallery">ग्यालरी</a></li>
+          <li><a href="#events">कार्यक्रम</a></li>
+          <li><a href="#news">समाचार</a></li>
+          <li><a href="#contact">सम्पर्क</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero">
+      <div class="bg" id="hero-bg" style="background-image:url('<!-- Replace with hero image URL -->');"></div>
+      <div class="overlay"></div>
+      <div class="container content">
+        <p class="tagline">नेपाली लोक-दोहोरी गायक | जनताको आवाज</p>
+        <h2 class="sub">बाबुराम पन्थी — संगीतमा सरलता र आत्मा</h2>
+
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+          <div class="audio-card" aria-label="Featured track">
+            <!-- Replace with album/cover image for the featured track -->
+            <img src="<!-- Replace with featured track cover URL -->" alt="अल्बम कभर">
+            <div class="track-info">
+              <p class="track-title">लेटेस्ट सिंगल: <!-- Replace with song title --> </p>
+              <p class="track-sub">सिंगर • रेकर्डिङ • रिलिज मिति</p>
+              <!-- Replace with latest song raw URL -->
+              <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/audio/latest_song.mp3 -->
+              <audio id="featuredAudio" controls preload="none" src="<!-- Replace with latest song raw URL -->"></audio>
+            </div>
+          </div>
+
+          <div class="hero-buttons" style="display:flex;gap:10px;align-items:center">
+            <button class="btn" onclick="document.getElementById('featuredAudio').play()">प्ले गर</button>
+            <a class="btn secondary" href="#music">संगीत सुन्नुहोस्</a>
+            <a class="btn secondary" href="#contact">बुकिङ</a>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <!-- Social links: replace hrefs -->
+          <a href="<!-- Replace with Facebook URL -->" target="_blank" aria-label="Facebook" style="margin-right:8px">Facebook</a>
+          <a href="<!-- Replace with YouTube URL -->" target="_blank" aria-label="YouTube" style="margin-right:8px">YouTube</a>
+          <a href="<!-- Replace with Instagram URL -->" target="_blank" aria-label="Instagram" style="margin-right:8px">Instagram</a>
+          <a href="<!-- Replace with Apple Music URL -->" target="_blank" aria-label="Apple Music" style="margin-right:8px">Apple Music</a>
+          <a href="<!-- Replace with Spotify URL -->" target="_blank" aria-label="Spotify">Spotify</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">बारेमा</h2>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
+          <div>
+            <p> <!-- Replace with full biography in Nepali -->
+              बाबुराम पन्थी — छोटो परिचय यहाँ लेख्नुहोस्। उहाँको जन्म, संगीत यात्रा, प्रभाव, र प्रमुख उपलब्धिहरूको विस्तृत विवरण राख्नुहोस्।
+            </p>
+            <div style="margin-top:16px">
+              <h3 style="margin:0 0 8px 0">करियर टाइमलाइन</h3>
+              <div class="timeline" id="timeline">
+                <div class="timeline-item">2010 — पहिलो एल्बम रिलिज</div>
+                <div class="timeline-item">2015 — राष्ट्रिय पुरस्कार</div>
+                <div class="timeline-item">2019 — अन्तर्राष्ट्रिय कार्यक्रम</div>
+                <!-- Add more timeline items. Each item will animate into view -->
+              </div>
+            </div>
+          </div>
+
+          <aside>
+            <!-- Portrait images: Replace with raw GitHub URLs -->
+            <img loading="lazy" src="<!-- Replace with portrait1 URL -->" alt="Portrait 1" style="width:100%;border-radius:10px;margin-bottom:10px">
+            <img loading="lazy" src="<!-- Replace with portrait2 URL -->" alt="Portrait 2" style="width:100%;border-radius:10px">
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC / DISCOGRAPHY -->
+    <section id="music">
+      <div class="container">
+        <h2 class="section-title">संगीत / डिस्कोग्राफी</h2>
+        <p style="color:var(--muted)">तलका एल्बम/सिंगलहरू क्लिक गर्दा प्ले हुन्छ। Replace the image and mp3 links with your GitHub raw URLs.</p>
+
+        <div class="grid cols-3" id="albums">
+          <!-- ALBUM 1 -->
+          <div class="card album" data-track="<!-- Replace with track1 MP3 raw URL -->">
+            <!-- Replace with album1 cover raw URL -->
+            <img src="<!-- Replace with album1.jpg -->" alt="Album 1 cover">
+            <div class="meta">
+              <h3>एल्बम / सिंगल १</h3>
+              <p style="margin:6px 0 0;color:var(--muted)">सिंगल • रिलिज मिति</p>
+            </div>
+          </div>
+
+          <!-- ALBUM 2 -->
+          <div class="card album" data-track="<!-- Replace with track2 MP3 raw URL -->">
+            <img src="<!-- Replace with album2.jpg -->" alt="Album 2 cover">
+            <div class="meta">
+              <h3>एल्बम / सिंगल २</h3>
+              <p style="margin:6px 0 0;color:var(--muted)">singer • release date</p>
+            </div>
+          </div>
+
+          <!-- ALBUM 3 -->
+          <div class="card album" data-track="<!-- Replace with track3 MP3 raw URL -->">
+            <img src="<!-- Replace with album3.jpg -->" alt="Album 3 cover">
+            <div class="meta">
+              <h3>एल्बम / सिंगल ३</h3>
+              <p style="margin:6px 0 0;color:var(--muted)">singer • release date</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Player modal for album tracks -->
+        <div id="playerModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;align-items:center;justify-content:center;padding:20px">
+          <div style="max-width:720px;width:100%;background:#fff;padding:18px;border-radius:10px">
+            <button onclick="closePlayer()" style="float:right;border:none;background:none;font-weight:700;cursor:pointer">बन्द गर्नुहोस् ✕</button>
+            <div id="playerContent" style="margin-top:10px"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos">
+      <div class="container">
+        <h2 class="section-title">भिडियो</h2>
+        <p style="color:var(--muted)">मुख्य म्युजिक भिडियो र प्लेलिस्ट</p>
+
+        <!-- Featured YouTube video - Replace with embed URL or playlist -->
+        <div class="card" style="padding:0;overflow:hidden">
+          <!-- Replace with YouTube embed URL -->
+          <!-- Example: https://www.youtube.com/embed/<VIDEO_ID> -->
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="<!-- Replace with featured YouTube embed URL -->" frameborder="0" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="grid cols-3">
+          <!-- Replace with iframe thumbnails or linked thumbnails -->
+          <div class="card video-thumb">
+            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="card video-thumb">
+            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="card video-thumb">
+            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">ग्यालरी</h2>
+        <div class="masonry" id="galleryGrid">
+          <!-- Replace with gallery images from GitHub (raw URLs) -->
+          <img loading="lazy" src="<!-- Replace with gallery1.jpg -->" alt="Gallery image 1" onclick="openLightbox(this.src)">
+          <img loading="lazy" src="<!-- Replace with gallery2.jpg -->" alt="Gallery image 2" onclick="openLightbox(this.src)">
+          <img loading="lazy" src="<!-- Replace with gallery3.jpg -->" alt="Gallery image 3" onclick="openLightbox(this.src)">
+          <img loading="lazy" src="<!-- Replace with gallery4.jpg -->" alt="Gallery image 4" onclick="openLightbox(this.src)">
+          <img loading="lazy" src="<!-- Replace with gallery5.jpg -->" alt="Gallery image 5" onclick="openLightbox(this.src)">
+          <img loading="lazy" src="<!-- Replace with gallery6.jpg -->" alt="Gallery image 6" onclick="openLightbox(this.src)">
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events">
+      <div class="container">
+        <h2 class="section-title">कार्यक्रम / टूर</h2>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card event-card">
+            <div class="event-date">२० जुलाई<br><small>२०२५</small></div>
+            <div>
+              <strong>कन्सर्ट — काठमाडौं</strong><br>
+              काठमाडौँ रंगशाला • टिकट लिंक: <a href="<!-- Replace with ticket link -->">यहाँ</a>
+            </div>
+          </div>
+
+          <div class="card event-card">
+            <div class="event-date">०५ अगस्ट<br><small>२०२५</small></div>
+            <div>
+              <strong>फेस्टिभल — पोखरा</strong><br>
+              पोखरा स्टेज • टिकट लिंक: <a href="<!-- Replace with ticket link -->">यहाँ</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <h3>अर्को कार्यक्रमसम्मको Countdown</h3>
+          <div id="countdown" style="font-weight:700;font-size:1.2rem;color:var(--accent)"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NEWS / BLOG -->
+    <section id="news">
+      <div class="container">
+        <h2 class="section-title">समाचार / ब्लग</h2>
+        <div class="grid cols-3">
+          <div class="card news-card">
+            <img src="<!-- Replace with news1.jpg -->" alt="news 1">
+            <h3>नयाँ गीत रिलिज</h3>
+            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
+            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
+          </div>
+          <div class="card news-card">
+            <img src="<!-- Replace with news2.jpg -->" alt="news 2">
+            <h3>इन्तर्व्यु</h3>
+            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
+            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
+          </div>
+          <div class="card news-card">
+            <img src="<!-- Replace with news3.jpg -->" alt="news 3">
+            <h3>प्रेस विज्ञप्ति</h3>
+            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
+            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / BOOKING -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">सम्पर्क / बुकिङ</h2>
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:20px">
+          <div>
+            <form id="bookingForm" onsubmit="submitForm(event)">
+              <input type="text" id="name" placeholder="नाम" required>
+              <input type="email" id="email" placeholder="इमेल" required>
+              <input type="tel" id="phone" placeholder="फोन (वैकल्पिक)">
+              <textarea id="message" rows="5" placeholder="सन्देश" required></textarea>
+              <button class="btn" type="submit">पठाउनुहोस्</button>
+            </form>
+            <p id="formResult" style="margin-top:8px;color:green;display:none">धन्यवाद! तपाईंको सन्देश पठाइयो।</p>
+          </div>
+
+          <aside class="card">
+            <h3>बुकिङ सम्पर्क</h3>
+            <p>म्यानेजर: <a href="mailto:<!-- Replace with manager email -->"><!-- Replace with manager email --></a></p>
+            <p>प्रेस किट: <a href="<!-- Replace with PressKit PDF URL -->" download>डाउनलोड गर्नुहोस्</a></p>
+            <div style="margin-top:12px">
+              <strong>Follow</strong><br>
+              <a href="<!-- Replace with Facebook URL -->">Facebook</a> •
+              <a href="<!-- Replace with YouTube URL -->">YouTube</a> •
+              <a href="<!-- Replace with Instagram URL -->">Instagram</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTIONAL: MERCH -->
+    <section id="merch">
+      <div class="container">
+        <h2 class="section-title">मर्च (स्टोर)</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <img src="<!-- Replace with merch1.jpg -->" alt="merch 1" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
+            <h3>टी-शर्ट</h3>
+            <p style="color:var(--muted)">Rs. 1200</p>
+            <button class="btn">Add to cart</button>
+          </div>
+          <div class="card">
+            <img src="<!-- Replace with merch2.jpg -->" alt="merch 2" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
+            <h3>CD</h3>
+            <p style="color:var(--muted)">Rs. 300</p>
+            <button class="btn">Add to cart</button>
+          </div>
+          <div class="card">
+            <img src="<!-- Replace with merch3.jpg -->" alt="merch 3" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
+            <h3>डिजिटल एल्बम</h3>
+            <p style="color:var(--muted)">Rs. 250</p>
+            <button class="btn">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Enlarged image">
   </div>
-</section>
 
-<!-- Bio -->
-<section id="bio">
-  <img src="bio.jpg" alt="Singer" class="fade-slide">
-  <h2 class="fade-slide">About Baburam Panthi</h2>
-  <p class="fade-slide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Baburam Panthi is a renowned Nepali folk and dohori singer, known for his soulful voice and captivating performances.</p>
-</section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div>
+        <strong>बाबुराम पन्थी</strong><br>
+        <small>© <span id="year"></span> सबै अधिकार सुरक्षित</small>
+      </div>
+      <div>
+        <a href="<!-- Replace with Facebook URL -->">Facebook</a> •
+        <a href="<!-- Replace with YouTube URL -->">YouTube</a> •
+        <a href="<!-- Replace with Instagram URL -->">Instagram</a>
+      </div>
+    </div>
+  </footer>
 
-<!-- Music -->
-<section id="music">
-  <h2>Music</h2>
-  <div class="track fade-slide">
-    <p>Song 1</p>
-    <audio controls>
-      <source src="song1.mp3" type="audio/mpeg">
-    </audio>
-    <div class="progress"><div class="progress-bar"></div></div>
-  </div>
-  <div class="track fade-slide">
-    <p>Song 2</p>
-    <audio controls>
-      <source src="song2.mp3" type="audio/mpeg">
-    </audio>
-    <div class="progress"><div class="progress-bar"></div></div>
-  </div>
-  <div class="track fade-slide">
-    <p>Song 3</p>
-    <audio controls>
-      <source src="song3.mp3" type="audio/mpeg">
-    </audio>
-    <div class="progress"><div class="progress-bar"></div></div>
-  </div>
-</section>
-
-<!-- Videos -->
-<section id="videos">
-  <h2>Videos</h2>
-  <div class="video-card fade-slide">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div class="video-card fade-slide">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-  </div>
-</section>
-
-<!-- Albums -->
-<section id="albums">
-  <h2>Albums</h2>
-  <div class="grid-item fade-slide"><img src="album1.jpg" alt="Album 1"></div>
-  <div class="grid-item fade-slide"><img src="album2.jpg" alt="Album 2"></div>
-  <div class="grid-item fade-slide"><img src="album3.jpg" alt="Album 3"></div>
-</section>
-
-<!-- Gallery -->
-<section id="gallery">
-  <h2>Gallery</h2>
-  <div class="grid-item fade-slide"><img src="gallery1.jpg" alt="Gallery 1"></div>
-  <div class="grid-item fade-slide"><img src="gallery2.jpg" alt="Gallery 2"></div>
-  <div class="grid-item fade-slide"><img src="gallery3.jpg" alt="Gallery 3"></div>
-</section>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <img src="" alt="lightbox">
-</div>
-
-<!-- Contact -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:example@example.com">example@example.com</a></p>
-  <div>
-    <a href="#" target="_blank">Facebook</a>
-    <a href="#" target="_blank">Instagram</a>
-    <a href="#" target="_blank">YouTube</a>
-  </div>
-</section>
-
-<script>
-  // Navigation active & scroll
-  const links = document.querySelectorAll('.nav-link');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector(link.dataset.target).scrollIntoView({behavior:'smooth'});
+  <script>
+    // Basic helper: smooth scroll for header links
+    document.querySelectorAll('nav a, .hero-buttons a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
     });
-  });
 
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    let scrollPos = window.scrollY + 200;
-    sections.forEach(sec => {
-      if(scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
-        links.forEach(l => l.classList.remove('active'));
-        document.querySelector(`.nav-link[data-target="#${sec.id}"]`).classList.add('active');
-      }
-    });
-    // Fade-slide animations
-    document.querySelectorAll('.fade-slide').forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if(top < window.innerHeight - 100) el.style.opacity='1', el.style.transform='translateY(0)';
-    });
-  });
+    // Timeline reveal on scroll
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting) ent.target.classList.add('visible');
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.timeline-item').forEach(el=>obs.observe(el));
 
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = lightbox.querySelector('img');
-  document.querySelectorAll('#albums .grid-item img, #gallery .grid-item img').forEach(img=>{
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lightbox.style.display = 'flex';
+    // Album click -> open player modal
+    document.querySelectorAll('.album').forEach(album=>{
+      album.addEventListener('click', ()=>{
+        const track = album.dataset.track;
+        if(!track) { alert('Track URL missing — edit data-track placeholder.'); return; }
+        openPlayer(track, album.querySelector('.meta h3').innerText || 'Track');
+      });
     });
-  });
-  function closeLightbox(){ lightbox.style.display='none'; }
 
-  // Audio progress
-  document.querySelectorAll('#music audio').forEach(audio=>{
-    const progressBar = audio.parentElement.querySelector('.progress-bar');
-    audio.addEventListener('timeupdate', () => {
-      const percent = (audio.currentTime/audio.duration)*100;
-      progressBar.style.width = percent+'%';
+    function openPlayer(trackUrl, title){
+      const modal = document.getElementById('playerModal');
+      const content = document.getElementById('playerContent');
+      content.innerHTML = `
+        <h3>${title}</h3>
+        <audio controls preload="none" style="width:100%" src="${trackUrl}"></audio>
+      `;
+      modal.style.display = 'flex';
+    }
+    function closePlayer(){
+      const modal = document.getElementById('playerModal');
+      modal.style.display = 'none';
+      document.getElementById('playerContent').innerHTML = '';
+    }
+
+    // Lightbox
+    function openLightbox(src){
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox(){
+      document.getElementById('lightbox').classList.remove('open');
+      setTimeout(()=>document.getElementById('lightboxImg').src='',200);
+    }
+
+    // Simple contact form (client-side only). Instead of backend, we show success and optionally mailto.
+    function submitForm(e){
+      e.preventDefault();
+      // Instruct users to replace with a Formspree/Google Forms or server endpoint if they want real emails.
+      document.getElementById('formResult').style.display = 'block';
+      document.getElementById('bookingForm').reset();
+    }
+
+    // Countdown (replace with next event date)
+    // Replace the targetDate with the next event date in "YYYY-MM-DDTHH:MM:SS" format
+    const targetDate = new Date("2025-07-20T19:00:00"); // <-- Replace with actual date/time
+    function updateCountdown(){
+      const now = new Date();
+      const diff = targetDate - now;
+      if(diff <= 0){ document.getElementById('countdown').innerText = 'अर्को कार्यक्रम चलिरहेको छ / सम्पन्न'; return; }
+      const days = Math.floor(diff/86400000);
+      const hrs = Math.floor((diff%86400000)/3600000);
+      const mins = Math.floor((diff%3600000)/60000);
+      const secs = Math.floor((diff%60000)/1000);
+      document.getElementById('countdown').innerText = `${days} दिन ${hrs} : ${mins} : ${secs}`;
+    }
+    setInterval(updateCountdown,1000);
+    updateCountdown();
+
+    // Footer year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Accessibility: keyboard close for lightbox/modal
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape'){ closeLightbox(); closePlayer(); }
     });
-  });
-</script>
+
+    // Progressive enhancement note: audio tags use preload="none" and will not autoplay.
+  </script>
 
 </body>
 </html>
