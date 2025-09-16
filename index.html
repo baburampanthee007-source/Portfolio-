@@ -1307,35 +1307,35 @@ function changeVideo(videoID, title){
 </section>
 
 <!-- Professional Experience / Buddha Air Section -->
-<section id="events" class="events" style="background:#f7f7f7; padding:60px 0;">
-    <div class="container">
+<section id="experience" style="background:#f7f7f7; padding:80px 0; position:relative; overflow:hidden;">
+    <!-- Background Illustration -->
+    <img src="buddha.jpg" alt="Buddha Air Background" 
+         style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:120%; opacity:0.1; z-index:1;">
+
+    <div class="container" style="position:relative; z-index:2;">
         <div class="section-title" style="text-align:center; margin-bottom:50px;">
-            <!-- Buddha Air Logo -->
-            <img src="buddha.jpg" alt="Buddha Air Logo" style="width:120px; margin-bottom:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+            <img src="logo.jpg" alt="Buddha Air Logo" 
+                 style="width:120px; margin-bottom:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
             <h2 style="font-size:2.8rem; color:#FF7F00; font-weight:700;">व्यावसायिक अनुभव</h2>
             <p style="font-size:1.1rem; color:#555;">Baburam Panthee – Chief Operating Officer, Buddha Air</p>
         </div>
 
-        <div class="timeline">
-            <!-- Timeline Item -->
-            <div class="timeline-item fade-in" style="position:relative; margin-bottom:50px;">
-                <div class="timeline-icon" style="background:#FF7F00; width:20px; height:20px; border-radius:50%; position:absolute; left:-10px; top:10px;"></div>
-                <div class="timeline-content" 
-                     style="background:#fff; padding:25px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
-                    <h3 style="color:#FF7F00; font-size:1.5rem; margin-bottom:10px;">Chief Operating Officer (COO)</h3>
-                    <span style="color:#888; font-size:0.9rem;">२०२३ – Present | Buddha Air Pvt. Ltd., ललितपुर, नेपाल</span>
-                    <p style="margin-top:15px; color:#555; line-height:1.6;">
-                        बाबुराम पन्थी बुद्ध एयरको संचालन प्रमुख (COO) हुन्। उहाँले कम्पनीको दैनिक संचालन, सुरक्षा मापदण्ड, कर्मचारी व्यवस्थापन, 
-                        र साझेदारी विकास जस्ता जिम्मेवारीहरू सम्हाल्नुहुन्छ। उहाँको नेतृत्वमा, बुद्ध एयरले नयाँ गन्तव्यहरू थप्दै, ग्राहक अनुभव सुधार गर्दै, 
-                        र हवाई सेवा विस्तार गर्दै आएको छ।
-                    </p>
-                    <!-- Buddha Air Plane Image -->
-                    <div class="timeline-img" style="margin-top:20px; overflow:hidden; border-radius:12px;">
-                        <img src="plane.webp" 
-                             alt="Buddha Air Plane" 
-                             style="width:100%; transition: transform 0.5s; border: 3px solid #FF7F00;">
-                    </div>
-                </div>
+        <div class="experience-card fade-in" 
+             style="background:#fff; padding:30px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1); max-width:900px; margin:0 auto; text-align:center; position:relative; overflow:hidden;">
+            
+            <h3 style="color:#FF7F00; font-size:1.8rem; margin-bottom:10px;">Chief Operating Officer (COO)</h3>
+            <span style="color:#888; font-size:0.95rem;">२०२३ – Present | Buddha Air Pvt. Ltd., ललितपुर, नेपाल</span>
+            <p style="margin-top:20px; color:#555; line-height:1.6; font-size:1rem;">
+                बाबुराम पन्थी बुद्ध एयरको संचालन प्रमुख (COO) हुन्। उहाँले कम्पनीको दैनिक संचालन, सुरक्षा मापदण्ड, कर्मचारी व्यवस्थापन, 
+                र साझेदारी विकास जस्ता जिम्मेवारीहरू सम्हाल्नुहुन्छ। उहाँको नेतृत्वमा, बुद्ध एयरले नयाँ गन्तव्यहरू थप्दै, ग्राहक अनुभव सुधार गर्दै, 
+                र हवाई सेवा विस्तार गर्दै आएको छ।
+            </p>
+
+            <!-- Animated Plane Image -->
+            <div style="margin-top:30px; position:relative; height:300px;">
+                <img src="plane.webp" alt="Buddha Air Plane" 
+                     style="width:250px; max-width:60%; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); 
+                     animation: flyPlane 5s ease-in-out infinite alternate; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.2);">
             </div>
         </div>
     </div>
@@ -1343,13 +1343,13 @@ function changeVideo(videoID, title){
 
 <!-- CSS Animations -->
 <style>
+/* Fade-in Animation */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
     animation: fadeInUp 1s forwards;
     animation-delay: 0.2s;
 }
-
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -1357,13 +1357,21 @@ function changeVideo(videoID, title){
     }
 }
 
-.timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+/* Plane Floating Animation */
+@keyframes flyPlane {
+    0% { transform: translate(-50%, -55%) rotate(-2deg); }
+    50% { transform: translate(-50%, -50%) rotate(2deg); }
+    100% { transform: translate(-50%, -55%) rotate(-2deg); }
 }
 
-.timeline-img img:hover {
-    transform: scale(1.05);
+/* Responsive */
+@media(max-width:768px){
+    .experience-card {
+        padding:20px;
+    }
+    .experience-card img {
+        width:180px !important;
+    }
 }
 </style>
 
