@@ -1306,56 +1306,67 @@ function changeVideo(videoID, title){
     </div>
 </section>
 
-<!-- Professional COO Section -->
-<section id="experience" style="position:relative; background:linear-gradient(120deg, #fff, #f7f7f7); padding:100px 0; overflow:hidden; font-family:'Poppins',sans-serif;">
-    <!-- Subtle Background -->
-    <img src="buddha.jpg" alt="Buddha Air Background" 
-         style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:120%; opacity:0.05; z-index:1;">
+<!-- Professional Experience / Buddha Air Section -->
+<section id="experience" style="position:relative; background:#f7f7f7; padding:100px 0; overflow:hidden; font-family:'Poppins',sans-serif;">
+  
+  <!-- Subtle background -->
+  <img src="buddha.jpg" alt="Buddha Air" 
+       style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:120%; opacity:0.05; z-index:1;">
 
-    <div class="container" style="position:relative; z-index:2; max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;">
-        
-        <!-- Left: COO Info -->
-        <div style="flex:1 1 500px; padding:20px;">
-            <img src="logo.jpg" alt="Buddha Air Logo" 
-                 style="width:120px; margin-bottom:20px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.1);">
-            <h2 style="font-size:3rem; color:#FF7F00; font-weight:700; margin-bottom:15px;">Baburam Panthee</h2>
-            <h4 style="font-size:1.3rem; color:#333; margin-bottom:20px;">Chief Operating Officer (COO) – Buddha Air</h4>
-            <p style="font-size:1rem; color:#555; line-height:1.8;">
-                बाबुराम पन्थी बुद्ध एयरको संचालन प्रमुख (COO) हुन्। उहाँले कम्पनीको दैनिक संचालन, सुरक्षा मापदण्ड, कर्मचारी व्यवस्थापन, 
-                र साझेदारी विकास जस्ता जिम्मेवारीहरू सम्हाल्नुहुन्छ। उहाँको नेतृत्वमा, बुद्ध एयरले नयाँ गन्तव्यहरू थप्दै, ग्राहक अनुभव सुधार गर्दै, 
-                र हवाई सेवा विस्तार गर्दै आएको छ।
-            </p>
-        </div>
-
-        <!-- Right: Plane Image -->
-        <div style="flex:1 1 500px; padding:20px; position:relative; text-align:center;">
-            <img src="plane.webp" alt="Buddha Air Plane" 
-                 style="width:300px; max-width:80%; animation: flySmooth 6s ease-in-out infinite alternate; border-radius:12px; box-shadow:0 15px 40px rgba(0,0,0,0.15);">
-        </div>
-
+  <div class="container" style="position:relative; z-index:2; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto;">
+    
+    <!-- Left Side: COO Info -->
+    <div style="flex:1 1 500px; padding:20px;">
+      <img src="logo.jpg" alt="Buddha Air Logo" style="width:120px; margin-bottom:20px;">
+      <h2 style="font-size:3rem; color:#FF7F00; font-weight:700; margin-bottom:10px;">Baburam Panthee</h2>
+      <h4 style="font-size:1.2rem; color:#333; margin-bottom:20px;">Chief Operating Officer (COO) – Buddha Air</h4>
+      <p style="font-size:1rem; color:#555; line-height:1.8;">
+        बाबुराम पन्थी बुद्ध एयरको संचालन प्रमुख (COO) हुन्। उहाँले कम्पनीको दैनिक संचालन, सुरक्षा मापदण्ड, कर्मचारी व्यवस्थापन,
+        र साझेदारी विकास जस्ता जिम्मेवारीहरू सम्हाल्नुहुन्छ। उहाँको नेतृत्वमा, बुद्ध एयरले नयाँ गन्तव्यहरू थप्दै, ग्राहक अनुभव सुधार गर्दै,
+        र हवाई सेवा विस्तार गर्दै आएको छ।
+      </p>
     </div>
+
+    <!-- Right Side: Plane Image -->
+    <div style="flex:1 1 500px; padding:20px; text-align:center;">
+      <img src="plane.webp" alt="Buddha Air Plane" 
+           style="width:300px; max-width:80%; border-radius:12px; animation: floatPlane 5s ease-in-out infinite alternate;">
+    </div>
+
+  </div>
 </section>
 
 <style>
-/* Plane Smooth Floating Animation */
-@keyframes flySmooth {
-    0% { transform: translateY(-10px) rotate(-2deg); }
-    50% { transform: translateY(5px) rotate(2deg); }
-    100% { transform: translateY(-10px) rotate(-2deg); }
+/* Smooth floating animation for plane */
+@keyframes floatPlane {
+  0% { transform: translateY(-10px) rotate(-2deg); }
+  50% { transform: translateY(10px) rotate(2deg); }
+  100% { transform: translateY(-10px) rotate(-2deg); }
 }
 
-/* Responsive */
+/* Fade-in animation for container */
+#experience .container {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for mobile */
 @media(max-width:992px){
-    #experience .container {
-        flex-direction:column;
-        text-align:center;
-    }
-    #experience img {
-        margin:0 auto 20px auto;
-    }
+  #experience .container {
+    flex-direction:column;
+    text-align:center;
+  }
 }
 </style>
-
 
     <!-- News Section -->
     <section id="news" class="news">
