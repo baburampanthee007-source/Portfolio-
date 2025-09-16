@@ -1,558 +1,1595 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>बाबुराम पन्थी — नेपाली लोक दोहोरी गायक</title>
-  <meta name="description" content="बाबुराम पन्थी — नेपाली लोक-दोहोरी गायक। नयाँ गीत, भिडियो, कार्यक्रम र बुकिङ जानकारी।">
-  <meta property="og:title" content="बाबुराम पन्थी — आधिकारिक वेबसाइट">
-  <meta property="og:description" content="नेपाली लोक-दोहोरी गीतहरू, भिडियोहरू र कार्यक्रमहरू।">
-  <!-- Replace with hero image raw GitHub URL -->
-  <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/images/hero.jpg -->
-  <meta property="og:image" content="<!-- Replace with hero image URL -->">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --accent:#ff7a00; /* orange */
-      --bg:#ffffff;
-      --dark:#1f1f1f;
-      --muted:#666;
-      --max-width:1100px;
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      color:var(--dark);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
-    header{
-      position:sticky;top:0;z-index:60;
-      backdrop-filter: blur(6px);
-      background:linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
-      border-bottom:1px solid rgba(0,0,0,0.04);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{height:44px;width:44px;border-radius:8px;object-fit:cover}
-    .brand h1{font-family:Playfair Display, serif;margin:0;font-size:1.1rem;color:var(--dark)}
-    nav ul{display:flex;gap:14px;align-items:center;margin:0;padding:0;list-style:none}
-    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
-    nav a:hover{background:rgba(255,122,0,0.08);color:var(--accent)}
-    /* Hero */
-    .hero{
-      min-height:70vh;
-      display:grid;
-      grid-template-columns:1fr;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-      margin-bottom:28px;
-    }
-    .hero .bg{
-      position:absolute;inset:0;background-size:cover;background-position:center;
-      transform:scale(1.03);
-      transition:transform 8s linear;
-      filter:saturate(1.05) contrast(0.95);
-    }
-    .hero:hover .bg{transform:scale(1.08)}
-    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));}
-    .hero .content{position:relative;z-index:3;padding:60px 18px;color:white}
-    .tagline{font-family:Playfair Display, serif;font-size:1.8rem;margin:0 0 12px}
-    .sub{font-size:1rem;color:rgba(255,255,255,0.95);margin-bottom:18px}
-    .hero .controls{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      background:var(--accent);color:white;padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;
-      box-shadow:0 6px 18px rgba(255,122,0,0.12);
-    }
-    .btn.secondary{background:rgba(255,255,255,0.12);color:white;border:1px solid rgba(255,255,255,0.12)}
-    /* Featured audio */
-    .audio-card{background:rgba(255,255,255,0.95);padding:12px;border-radius:10px;color:var(--dark);display:flex;gap:12px;align-items:center;max-width:640px}
-    .audio-card img{width:72px;height:72px;object-fit:cover;border-radius:8px}
-    .track-info{flex:1}
-    .track-title{font-weight:700;margin:0}
-    .track-sub{color:var(--muted);font-size:0.9rem;margin-top:6px}
-    audio{width:100%;outline:none}
-    /* Sections */
-    section{padding:48px 0}
-    h2.section-title{font-family:Playfair Display, serif;font-size:1.5rem;margin:0 0 16px}
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
-    .card{background:#fff;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(15,15,15,0.04);overflow:hidden}
-    /* About timeline */
-    .timeline{display:flex;flex-direction:column;gap:10px;padding-left:10px;border-left:3px solid rgba(0,0,0,0.06)}
-    .timeline-item{padding:8px 0;opacity:0;transform:translateY(10px);transition:all .6s ease}
-    .timeline-item.visible{opacity:1;transform:none}
-    /* Discography */
-    .album{border-radius:8px;overflow:hidden;position:relative;cursor:pointer}
-    .album img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .25s ease,box-shadow .25s ease}
-    .album:hover img{transform:scale(1.04);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
-    .album .meta{padding:10px}
-    .album .meta h3{margin:0;font-size:1rem}
-    /* Video thumbnails */
-    .video-thumb{position:relative;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden}
-    .video-thumb iframe{position:absolute;inset:0;width:100%;height:100%}
-    /* Gallery */
-    .masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-    .masonry img{width:100%;height:180px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
-    /* Events */
-    .event-card{display:flex;gap:12px;align-items:center}
-    .event-date{min-width:84px;text-align:center;padding:8px;border-radius:8px;background:rgba(255,122,0,0.08);font-weight:700}
-    /* News */
-    .news-card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
-    /* Contact */
-    form{display:grid;gap:10px}
-    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);font-size:1rem}
-    .footer{padding:30px 0;background:#fafafa;border-top:1px solid rgba(0,0,0,0.03);margin-top:24px}
-    /* Responsive */
-    @media (max-width:900px){
-      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
-      .masonry{grid-template-columns:repeat(2,1fr)}
-      .hero{min-height:56vh}
-    }
-    @media (max-width:600px){
-      nav ul{display:none}
-      .brand h1{font-size:1rem}
-      .grid.cols-3{grid-template-columns:1fr}
-      .masonry{grid-template-columns:1fr}
-    }
-
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;padding:20px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
-    .lightbox.open{opacity:1;pointer-events:auto}
-    .lightbox img{max-width:100%;max-height:85vh;border-radius:10px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बाबुराम पन्थी - नेपाली लोक-दोहोरी गायक</title>
+    <meta name="description" content="बाबुराम पन्थीको आधिकारिक वेबसाइट। नेपाली लोक दोहोरी संगीतका लोकप्रिय गायक।">
+    <meta name="keywords" content="बाबुराम पन्थी, नेपाली गायक, लोक दोहोरी, Nepali singer, Lok Dohori, Baburam Panthee">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #FF7F00;
+            --primary-dark: #E67200;
+            --light: #FFFFFF;
+            --dark: #222222;
+            --gray: #F5F5F5;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: var(--light);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+        }
+        
+        header.scrolled .logo {
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        header.scrolled .logo span {
+            color: var(--dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        header.scrolled .nav-links a {
+            color: var(--dark);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled .hamburger div {
+            background-color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x800/FF7F00/FFFFFF/png?text=Baburam+Panthee') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-btns {
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+        
+        .audio-player {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 40px;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .audio-player h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-images {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .timeline {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item:nth-child(odd):after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even):after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background-color: var(--gray);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Music Section */
+        .music {
+            background-color: var(--gray);
+        }
+        
+        .albums {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .album-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .album-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .album-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .album-card:hover .album-img img {
+            transform: scale(1.1);
+        }
+        
+        .album-info {
+            padding: 20px;
+        }
+        
+        .album-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .album-year {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .album-links {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .album-links a {
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+        
+        .album-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Videos Section */
+        .videos {
+            background-color: var(--light);
+        }
+        
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .featured-video {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .video-thumbnails {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .video-thumb {
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .video-thumb img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .video-thumb:after {
+            content: '\f04b';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--light);
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--gray);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover:after {
+            opacity: 1;
+        }
+        
+        /* Events Section */
+        .events {
+            background-color: var(--light);
+        }
+        
+        .events-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .upcoming-events {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .event-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-date {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .event-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .countdown {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--primary);
+            color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .countdown-title {
+            color: var(--light);
+            margin-bottom: 30px;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .countdown-item {
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        /* News Section */
+        .news {
+            background-color: var(--gray);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-img {
+            width: 100%;
+            height: 200px;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd):after,
+            .timeline-item:nth-child(even):after {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background-color: var(--light);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                color: var(--dark);
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -8px);
+            }
+            
+            header.scrolled .hamburger.active div {
+                background-color: var(--dark);
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .hero-btns .btn {
+                margin: 10px 5px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">बबुराम <span>पन्ती</span></a>
+            
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">गृह</a></li>
+                <li><a href="#about">बारेमा</a></li>
+                <li><a href="#music">संगीत</a></li>
+                <li><a href="#videos">भिडियो</a></li>
+                <li><a href="#gallery">ग्यालरी</a></li>
+                <li><a href="#events">कार्यक्रम</a></li>
+                <li><a href="#news">समाचार</a></li>
+                <li><a href="#contact">सम्पर्क</a></li>
+            </ul>
+        </div>
+    </header>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <!-- Replace with small logo/portrait raw GitHub URL -->
-        <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/images/avatar.jpg -->
-        <img src="<!-- Replace with small logo or avatar URL -->" alt="बाबुराम पन्थी">
-        <h1>बाबुराम पन्थी</h1>
-      </div>
-
-      <nav>
-        <ul>
-          <li><a href="#home">गृह</a></li>
-          <li><a href="#about">बारेमा</a></li>
-          <li><a href="#music">संगीत</a></li>
-          <li><a href="#videos">भिडियो</a></li>
-          <li><a href="#gallery">ग्यालरी</a></li>
-          <li><a href="#events">कार्यक्रम</a></li>
-          <li><a href="#news">समाचार</a></li>
-          <li><a href="#contact">सम्पर्क</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <main>
+    <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="bg" id="hero-bg" style="background-image:url('<!-- Replace with hero image URL -->');"></div>
-      <div class="overlay"></div>
-      <div class="container content">
-        <p class="tagline">नेपाली लोक-दोहोरी गायक | जनताको आवाज</p>
-        <h2 class="sub">बाबुराम पन्थी — संगीतमा सरलता र आत्मा</h2>
-
-        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-          <div class="audio-card" aria-label="Featured track">
-            <!-- Replace with album/cover image for the featured track -->
-            <img src="<!-- Replace with featured track cover URL -->" alt="अल्बम कभर">
-            <div class="track-info">
-              <p class="track-title">लेटेस्ट सिंगल: <!-- Replace with song title --> </p>
-              <p class="track-sub">सिंगर • रेकर्डिङ • रिलिज मिति</p>
-              <!-- Replace with latest song raw URL -->
-              <!-- e.g. https://raw.githubusercontent.com/<username>/<repo>/main/audio/latest_song.mp3 -->
-              <audio id="featuredAudio" controls preload="none" src="<!-- Replace with latest song raw URL -->"></audio>
+        <div class="container hero-content">
+            <h1>बाबुराम पन्थी</h1>
+            <p>नेपाली लोक-दोहोरी गायक | जनताको आवाज</p>
+            
+            <div class="hero-btns">
+                <a href="#music" class="btn">मेरो संगीत</a>
+                <a href="#contact" class="btn btn-outline">बुकिङ गर्नुहोस्</a>
             </div>
-          </div>
-
-          <div class="hero-buttons" style="display:flex;gap:10px;align-items:center">
-            <button class="btn" onclick="document.getElementById('featuredAudio').play()">प्ले गर</button>
-            <a class="btn secondary" href="#music">संगीत सुन्नुहोस्</a>
-            <a class="btn secondary" href="#contact">बुकिङ</a>
-          </div>
-        </div>
-
-        <div style="margin-top:16px;">
-          <!-- Social links: replace hrefs -->
-          <a href="<!-- Replace with Facebook URL -->" target="_blank" aria-label="Facebook" style="margin-right:8px">Facebook</a>
-          <a href="<!-- Replace with YouTube URL -->" target="_blank" aria-label="YouTube" style="margin-right:8px">YouTube</a>
-          <a href="<!-- Replace with Instagram URL -->" target="_blank" aria-label="Instagram" style="margin-right:8px">Instagram</a>
-          <a href="<!-- Replace with Apple Music URL -->" target="_blank" aria-label="Apple Music" style="margin-right:8px">Apple Music</a>
-          <a href="<!-- Replace with Spotify URL -->" target="_blank" aria-label="Spotify">Spotify</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">बारेमा</h2>
-        <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
-          <div>
-            <p> <!-- Replace with full biography in Nepali -->
-              बाबुराम पन्थी — छोटो परिचय यहाँ लेख्नुहोस्। उहाँको जन्म, संगीत यात्रा, प्रभाव, र प्रमुख उपलब्धिहरूको विस्तृत विवरण राख्नुहोस्।
-            </p>
-            <div style="margin-top:16px">
-              <h3 style="margin:0 0 8px 0">करियर टाइमलाइन</h3>
-              <div class="timeline" id="timeline">
-                <div class="timeline-item">2010 — पहिलो एल्बम रिलिज</div>
-                <div class="timeline-item">2015 — राष्ट्रिय पुरस्कार</div>
-                <div class="timeline-item">2019 — अन्तर्राष्ट्रिय कार्यक्रम</div>
-                <!-- Add more timeline items. Each item will animate into view -->
-              </div>
+            
+            <div class="audio-player">
+                <h3>नयाँ गीत: <!-- Replace with latest song title -->मेरो देश नेपाल</h3>
+                <div class="player-controls">
+                    <audio id="main-audio" controls style="width: 100%">
+                        <!-- Replace with latest song MP3 -->
+                        <source src="https://example.com/latest-song.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
             </div>
-          </div>
-
-          <aside>
-            <!-- Portrait images: Replace with raw GitHub URLs -->
-            <img loading="lazy" src="<!-- Replace with portrait1 URL -->" alt="Portrait 1" style="width:100%;border-radius:10px;margin-bottom:10px">
-            <img loading="lazy" src="<!-- Replace with portrait2 URL -->" alt="Portrait 2" style="width:100%;border-radius:10px">
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- MUSIC / DISCOGRAPHY -->
-    <section id="music">
-      <div class="container">
-        <h2 class="section-title">संगीत / डिस्कोग्राफी</h2>
-        <p style="color:var(--muted)">तलका एल्बम/सिंगलहरू क्लिक गर्दा प्ले हुन्छ। Replace the image and mp3 links with your GitHub raw URLs.</p>
-
-        <div class="grid cols-3" id="albums">
-          <!-- ALBUM 1 -->
-          <div class="card album" data-track="<!-- Replace with track1 MP3 raw URL -->">
-            <!-- Replace with album1 cover raw URL -->
-            <img src="<!-- Replace with album1.jpg -->" alt="Album 1 cover">
-            <div class="meta">
-              <h3>एल्बम / सिंगल १</h3>
-              <p style="margin:6px 0 0;color:var(--muted)">सिंगल • रिलिज मिति</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-apple"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <!-- ALBUM 2 -->
-          <div class="card album" data-track="<!-- Replace with track2 MP3 raw URL -->">
-            <img src="<!-- Replace with album2.jpg -->" alt="Album 2 cover">
-            <div class="meta">
-              <h3>एल्बम / सिंगल २</h3>
-              <p style="margin:6px 0 0;color:var(--muted)">singer • release date</p>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>मेरो बारेमा</h2>
             </div>
-          </div>
-
-          <!-- ALBUM 3 -->
-          <div class="card album" data-track="<!-- Replace with track3 MP3 raw URL -->">
-            <img src="<!-- Replace with album3.jpg -->" alt="Album 3 cover">
-            <div class="meta">
-              <h3>एल्बम / सिंगल ३</h3>
-              <p style="margin:6px 0 0;color:var(--muted)">singer • release date</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>बाबुराम पन्थी नेपाली लोक दोहोरी संगीत क्षेत्रका एक चर्चित गायक हुन्। उनको जन्म नेपालको सुन्दर गाउँ रोल्पामा भएको थियो। उनले आफ्नो संगीत यात्रा सानो उमेरदेखि नै सुरु गरेका थिए।</p>
+                    
+                    <p>उनले आफ्नो पहिलो गीत "माया छैन कुरा छ" सन् २००५ मा रिलिज गरेका थिए जसले गर्दा उनी नेपाली लोक संगीत क्षेत्रमा चर्चित बन्न पुगे। यसपछि उनले धेरै लोकप्रिय गीतहरू रेकर्ड गरेका छन् जसमा "चुरोटको धुवाँ", "छिनछिन मैया", "फुलको थुंगो" लगायतका गीतहरू उल्लेखनीय छन्।</p>
+                    
+                    <p>बाबुराम पन्थीले आफ्नो संगीत यात्रामा धेरै पुरस्कारहरू प्राप्त गरिसकेका छन्। उनी आफ्नो मिठो आवाज र गीतहरूबाट नेपाली संगीत प्रेमीहरूको मन जित्न सफल भएका छन्।</p>
+                </div>
+                
+                <div class="about-images">
+                    <div class="about-img">
+                        <!-- Replace with about image 1 -->
+                        <img src="https://placehold.co/300x400/FF7F00/FFFFFF/png?text=Baburam+Panthee" alt="Baburam Panthee">
+                    </div>
+                    <div class="about-img">
+                        <!-- Replace with about image 2 -->
+                        <img src="https://placehold.co/300x400/222222/FFFFFF/png?text=Performance" alt="Baburam Performance">
+                    </div>
+                    <div class="about-img">
+                        <!-- Replace with about image 3 -->
+                        <img src="https://placehold.co/300x400/FF7F00/FFFFFF/png?text=Studio" alt="Baburam in Studio">
+                    </div>
+                </div>
             </div>
-          </div>
-
-        </div>
-
-        <!-- Player modal for album tracks -->
-        <div id="playerModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;align-items:center;justify-content:center;padding:20px">
-          <div style="max-width:720px;width:100%;background:#fff;padding:18px;border-radius:10px">
-            <button onclick="closePlayer()" style="float:right;border:none;background:none;font-weight:700;cursor:pointer">बन्द गर्नुहोस् ✕</button>
-            <div id="playerContent" style="margin-top:10px"></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- VIDEOS -->
-    <section id="videos">
-      <div class="container">
-        <h2 class="section-title">भिडियो</h2>
-        <p style="color:var(--muted)">मुख्य म्युजिक भिडियो र प्लेलिस्ट</p>
-
-        <!-- Featured YouTube video - Replace with embed URL or playlist -->
-        <div class="card" style="padding:0;overflow:hidden">
-          <!-- Replace with YouTube embed URL -->
-          <!-- Example: https://www.youtube.com/embed/<VIDEO_ID> -->
-          <div style="position:relative;padding-top:56.25%;">
-            <iframe src="<!-- Replace with featured YouTube embed URL -->" frameborder="0" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe>
-          </div>
-        </div>
-
-        <div style="height:18px"></div>
-
-        <div class="grid cols-3">
-          <!-- Replace with iframe thumbnails or linked thumbnails -->
-          <div class="card video-thumb">
-            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="card video-thumb">
-            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="card video-thumb">
-            <iframe src="<!-- Replace with other video embed URL -->" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery">
-      <div class="container">
-        <h2 class="section-title">ग्यालरी</h2>
-        <div class="masonry" id="galleryGrid">
-          <!-- Replace with gallery images from GitHub (raw URLs) -->
-          <img loading="lazy" src="<!-- Replace with gallery1.jpg -->" alt="Gallery image 1" onclick="openLightbox(this.src)">
-          <img loading="lazy" src="<!-- Replace with gallery2.jpg -->" alt="Gallery image 2" onclick="openLightbox(this.src)">
-          <img loading="lazy" src="<!-- Replace with gallery3.jpg -->" alt="Gallery image 3" onclick="openLightbox(this.src)">
-          <img loading="lazy" src="<!-- Replace with gallery4.jpg -->" alt="Gallery image 4" onclick="openLightbox(this.src)">
-          <img loading="lazy" src="<!-- Replace with gallery5.jpg -->" alt="Gallery image 5" onclick="openLightbox(this.src)">
-          <img loading="lazy" src="<!-- Replace with gallery6.jpg -->" alt="Gallery image 6" onclick="openLightbox(this.src)">
-        </div>
-      </div>
-    </section>
-
-    <!-- EVENTS -->
-    <section id="events">
-      <div class="container">
-        <h2 class="section-title">कार्यक्रम / टूर</h2>
-
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <div class="card event-card">
-            <div class="event-date">२० जुलाई<br><small>२०२५</small></div>
-            <div>
-              <strong>कन्सर्ट — काठमाडौं</strong><br>
-              काठमाडौँ रंगशाला • टिकट लिंक: <a href="<!-- Replace with ticket link -->">यहाँ</a>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">२००५</div>
+                        <h3>पहिलो गीत रिलिज</h3>
+                        <p>"माया छैन कुरा छ" गीतले नेपाली लोक संगीत क्षेत्रमा चर्चित बनाउन मद्दत गर्यो</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">२००८</div>
+                        <h3>पहिलो एल्बम</h3>
+                        <p>"जिन्दगी" एल्बम रिलिज गरे जुन धेरै लोकप्रिय भयो</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">२०१२</div>
+                        <h3>राष्ट्रिय संगीत पुरस्कार</h3>
+                        <p>वर्षको उत्कृष्ट लोक गायकको रूपमा राष्ट्रिय संगीत पुरस्कार प्राप्त गरे</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">२०१६</div>
+                        <h3>अन्तर्राष्ट्रिय प्रदर्शन</h3>
+                        <p>पहिलो पटक यूएसएमा आयोजित नेपाली समारोहमा प्रदर्शन गरे</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">२०२०</div>
+                        <h3>२० औं एल्बम रिलिज</h3>
+                        <p>आफ्नो करियरको २०औं एल्बम "सम्झनाहरू" सार्वजनिक गरे</p>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="card event-card">
-            <div class="event-date">०५ अगस्ट<br><small>२०२५</small></div>
-            <div>
-              <strong>फेस्टिभल — पोखरा</strong><br>
-              पोखरा स्टेज • टिकट लिंक: <a href="<!-- Replace with ticket link -->">यहाँ</a>
+    <!-- Music Section -->
+    <section id="music" class="music">
+        <div class="container">
+            <div class="section-title">
+                <h2>मेरो संगीत</h2>
             </div>
-          </div>
-        </div>
-
-        <div style="margin-top:12px">
-          <h3>अर्को कार्यक्रमसम्मको Countdown</h3>
-          <div id="countdown" style="font-weight:700;font-size:1.2rem;color:var(--accent)"></div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- NEWS / BLOG -->
-    <section id="news">
-      <div class="container">
-        <h2 class="section-title">समाचार / ब्लग</h2>
-        <div class="grid cols-3">
-          <div class="card news-card">
-            <img src="<!-- Replace with news1.jpg -->" alt="news 1">
-            <h3>नयाँ गीत रिलिज</h3>
-            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
-            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
-          </div>
-          <div class="card news-card">
-            <img src="<!-- Replace with news2.jpg -->" alt="news 2">
-            <h3>इन्तर्व्यु</h3>
-            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
-            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
-          </div>
-          <div class="card news-card">
-            <img src="<!-- Replace with news3.jpg -->" alt="news 3">
-            <h3>प्रेस विज्ञप्ति</h3>
-            <p style="color:var(--muted)">छोटो सारांश यहाँ राख्नुहोस्।</p>
-            <a href="#" class="btn" style="display:inline-block;margin-top:8px">थप पढ्नुहोस्</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT / BOOKING -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">सम्पर्क / बुकिङ</h2>
-        <div style="display:grid;grid-template-columns:1fr 360px;gap:20px">
-          <div>
-            <form id="bookingForm" onsubmit="submitForm(event)">
-              <input type="text" id="name" placeholder="नाम" required>
-              <input type="email" id="email" placeholder="इमेल" required>
-              <input type="tel" id="phone" placeholder="फोन (वैकल्पिक)">
-              <textarea id="message" rows="5" placeholder="सन्देश" required></textarea>
-              <button class="btn" type="submit">पठाउनुहोस्</button>
-            </form>
-            <p id="formResult" style="margin-top:8px;color:green;display:none">धन्यवाद! तपाईंको सन्देश पठाइयो।</p>
-          </div>
-
-          <aside class="card">
-            <h3>बुकिङ सम्पर्क</h3>
-            <p>म्यानेजर: <a href="mailto:<!-- Replace with manager email -->"><!-- Replace with manager email --></a></p>
-            <p>प्रेस किट: <a href="<!-- Replace with PressKit PDF URL -->" download>डाउनलोड गर्नुहोस्</a></p>
-            <div style="margin-top:12px">
-              <strong>Follow</strong><br>
-              <a href="<!-- Replace with Facebook URL -->">Facebook</a> •
-              <a href="<!-- Replace with YouTube URL -->">YouTube</a> •
-              <a href="<!-- Replace with Instagram URL -->">Instagram</a>
+            
+            <div class="albums">
+                <!-- Album 1 -->
+                <div class="album-card fade-in">
+                    <div class="album-img">
+                        <!-- Replace with album 1 cover -->
+                        <img src="https://placehold.co/300x300/FF7F00/FFFFFF/png?text=Album+1" alt="Album 1">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">जिन्दगी</h3>
+                        <div class="album-year">२००८</div>
+                        <div class="album-links">
+                            <a href="#"><i class="fas fa-play-circle"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                            <a href="#"><i class="fab fa-spotify"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Album 2 -->
+                <div class="album-card fade-in">
+                    <div class="album-img">
+                        <!-- Replace with album 2 cover -->
+                        <img src="https://placehold.co/300x300/222222/FFFFFF/png?text=Album+2" alt="Album 2">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">माया</h3>
+                        <div class="album-year">२०१०</div>
+                        <div class="album-links">
+                            <a href="#"><i class="fas fa-play-circle"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                            <a href="#"><i class="fab fa-spotify"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Album 3 -->
+                <div class="album-card fade-in">
+                    <div class="album-img">
+                        <!-- Replace with album 3 cover -->
+                        <img src="https://placehold.co/300x300/FF7F00/FFFFFF/png?text=Album+3" alt="Album 3">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">सम्झना</h3>
+                        <div class="album-year">२०१४</div>
+                        <div class="album-links">
+                            <a href="#"><i class="fas fa-play-circle"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                            <a href="#"><i class="fab fa-spotify"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Album 4 -->
+                <div class="album-card fade-in">
+                    <div class="album-img">
+                        <!-- Replace with album 4 cover -->
+                        <img src="https://placehold.co/300x300/222222/FFFFFF/png?text=Album+4" alt="Album 4">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">सपना</h3>
+                        <div class="album-year">२०१८</div>
+                        <div class="album-links">
+                            <a href="#"><i class="fas fa-play-circle"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                            <a href="#"><i class="fab fa-spotify"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </aside>
         </div>
-      </div>
     </section>
 
-    <!-- OPTIONAL: MERCH -->
-    <section id="merch">
-      <div class="container">
-        <h2 class="section-title">मर्च (स्टोर)</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <img src="<!-- Replace with merch1.jpg -->" alt="merch 1" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
-            <h3>टी-शर्ट</h3>
-            <p style="color:var(--muted)">Rs. 1200</p>
-            <button class="btn">Add to cart</button>
-          </div>
-          <div class="card">
-            <img src="<!-- Replace with merch2.jpg -->" alt="merch 2" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
-            <h3>CD</h3>
-            <p style="color:var(--muted)">Rs. 300</p>
-            <button class="btn">Add to cart</button>
-          </div>
-          <div class="card">
-            <img src="<!-- Replace with merch3.jpg -->" alt="merch 3" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
-            <h3>डिजिटल एल्बम</h3>
-            <p style="color:var(--muted)">Rs. 250</p>
-            <button class="btn">Add to cart</button>
-          </div>
+    <!-- Videos Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>भिडियोहरू</h2>
+            </div>
+            
+            <div class="video-container">
+                <div class="featured-video fade-in">
+                    <!-- Replace with featured YouTube video -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-thumbnails">
+                    <!-- Video Thumbnail 1 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 1 -->
+                        <img src="https://placehold.co/150x100/FF7F00/FFFFFF/png?text=Video+1" alt="Video 1">
+                    </div>
+                    
+                    <!-- Video Thumbnail 2 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 2 -->
+                        <img src="https://placehold.co/150x100/222222/FFFFFF/png?text=Video+2" alt="Video 2">
+                    </div>
+                    
+                    <!-- Video Thumbnail 3 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 3 -->
+                        <img src="https://placehold.co/150x100/FF7F00/FFFFFF/png?text=Video+3" alt="Video 3">
+                    </div>
+                    
+                    <!-- Video Thumbnail 4 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 4 -->
+                        <img src="https://placehold.co/150x100/222222/FFFFFF/png?text=Video+4" alt="Video 4">
+                    </div>
+                    
+                    <!-- Video Thumbnail 5 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 5 -->
+                        <img src="https://placehold.co/150x100/FF7F00/FFFFFF/png?text=Video+5" alt="Video 5">
+                    </div>
+                    
+                    <!-- Video Thumbnail 6 -->
+                    <div class="video-thumb fade-in">
+                        <!-- Replace with video thumbnail 6 -->
+                        <img src="https://placehold.co/150x100/222222/FFFFFF/png?text=Video+6" alt="Video 6">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-  </main>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>तस्वीरहरू</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 1 -->
+                    <img src="https://placehold.co/300x400/FF7F00/FFFFFF/png?text=Gallery+1" alt="Gallery Image 1">
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 2 -->
+                    <img src="https://placehold.co/300x300/222222/FFFFFF/png?text=Gallery+2" alt="Gallery Image 2">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 3 -->
+                    <img src="https://placehold.co/300x500/FF7F00/FFFFFF/png?text=Gallery+3" alt="Gallery Image 3">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 4 -->
+                    <img src="https://placehold.co/300x400/222222/FFFFFF/png?text=Gallery+4" alt="Gallery Image 4">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 5 -->
+                    <img src="https://placehold.co/300x300/FF7F00/FFFFFF/png?text=Gallery+5" alt="Gallery Image 5">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item fade-in">
+                    <!-- Replace with gallery image 6 -->
+                    <img src="https://placehold.co/300x500/222222/FFFFFF/png?text=Gallery+6" alt="Gallery Image 6">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightboxImg" src="" alt="Enlarged image">
-  </div>
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>आगामी कार्यक्रमहरू</h2>
+            </div>
+            
+            <div class="events-container">
+                <div class="upcoming-events">
+                    <!-- Event 1 -->
+                    <div class="event-card fade-in">
+                        <div class="event-date">२०२३ सेप्टेम्बर ३०</div>
+                        <h3 class="event-title">काठमाडौं कन्सर्ट</h3>
+                        <p>तुंडिखेल मैदान, काठमाडौं</p>
+                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="event-card fade-in">
+                        <div class="event-date">२०२३ अक्टोबर १५</div>
+                        <h3 class="event-title">पोखरा कन्सर्ट</h3>
+                        <p>पोखरा रङ्गशाला, पोखरा</p>
+                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="event-card fade-in">
+                        <div class="event-date">२०२३ नोभेम्बर ५</div>
+                        <h3 class="event-title">चितवन कन्सर्ट</h3>
+                        <p>गaindakot मैदान, भरतपुर</p>
+                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
+                    </div>
+                </div>
+                
+                <div class="countdown fade-in">
+                    <h3 class="countdown-title">अर्को कार्यक्रममा</h3>
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">दिन</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">घण्टा</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">मिनेट</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">सेकेन्ड</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-      <div>
-        <strong>बाबुराम पन्थी</strong><br>
-        <small>© <span id="year"></span> सबै अधिकार सुरक्षित</small>
-      </div>
-      <div>
-        <a href="<!-- Replace with Facebook URL -->">Facebook</a> •
-        <a href="<!-- Replace with YouTube URL -->">YouTube</a> •
-        <a href="<!-- Replace with Instagram URL -->">Instagram</a>
-      </div>
-    </div>
-  </footer>
+    <!-- News Section -->
+    <section id="news" class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>समाचार तथा अपडेटहरू</h2>
+            </div>
+            
+            <div class="news-grid">
+                <!-- News 1 -->
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <!-- Replace with news image 1 -->
+                        <img src="https://placehold.co/300x200/FF7F00/FFFFFF/png?text=News+1" alt="News 1">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">सेप्टेम्बर १, २०२३</div>
+                        <h3 class="news-title">नयाँ गीत "मेरो देश नेपाल" सार्वजनिक</h3>
+                        <p>बाबुराम पन्थीको नयाँ गीत "मेरो देश नेपाल" युट्युबमा सार्वजनिक भएको छ। गीतमा देशप्रतिको मायालाई उत्कृष्ट रूपमा प्रस्तुत गरिएको छ।</p>
+                        <a href="#" class="btn btn-outline">पढ्नुहोस्</a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <!-- Replace with news image 2 -->
+                        <img src="https://placehold.co/300x200/222222/FFFFFF/png?text=News+2" alt="News 2">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">अगस्ट २०, २०२३</div>
+                        <h3 class="news-title">काठमाडौंमा विशाल कन्सर्टको तयारी</h3>
+                        <p>सेप्टेम्बर ३० मा काठमाडौंको तुंडिखेल मैदानमा आयोजना हुने विशाल कन्सर्टको तयारी पूरा अवस्थामा पुगेको छ।</p>
+                        <a href="#" class="btn btn-outline">पढ्नुहोस्</a>
+                    </div>
+                </div>
+                
+                <!-- News 3 -->
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <!-- Replace with news image 3 -->
+                        <img src="https://placehold.co/300x200/FF7F00/FFFFFF/png?text=News+3" alt="News 3">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">अगस्ट ५, २०२३</div>
+                        <h3 class="news-title">युएसए टूरको घोषणा</h3>
+                        <p>बाबुराम पन्थीले युएसएको विभिन्न शहरहरूमा आफ्नो संगीत कार्यक्रम प्रस्तुत गर्ने plans को घोषणा गरेका छन्।</p>
+                        <a href="#" class="btn btn-outline">पढ्नुहोस्</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Basic helper: smooth scroll for header links
-    document.querySelectorAll('nav a, .hero-buttons a').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href && href.startsWith('#')){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>सम्पर्क र बुकिङ</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3>बुकिङको लागि सम्पर्क</h3>
+                            <p>राम बहादुर (म्यानेजर)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>इमेल</h3>
+                            <p>booking@baburampanthee.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>फोन</h3>
+                            <p>+९७७-९८५१०२०३०४</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div>
+                            <h3>प्रेस किट</h3>
+                            <p><a href="#" class="btn">डाउनलोड गर्नुहोस्</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="तपाईंको नाम" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="तपाईंको इमेल" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="तपाईंको फोन नम्बर">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="सन्देश" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">पठाउनुहोस्</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>बाबुराम पन्थी</h3>
+                    <p>नेपाली लोक दोहोरी संगीतका लोकप्रिय गायक। जनताको आवाजको रूपमा परिचित।</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>त्वरित लिंकहरू</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">गृह</a></li>
+                        <li><a href="#about">बारेमा</a></li>
+                        <li><a href="#music">संगीत</a></li>
+                        <li><a href="#videos">भिडियो</a></li>
+                        <li><a href="#events">कार्यक्रम</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>अन्य लिंकहरू</h3>
+                    <ul class="footer-links">
+                        <li><a href="#gallery">ग्यालरी</a></li>
+                        <li><a href="#news">समाचार</a></li>
+                        <li><a href="#contact">सम्पर्क</a></li>
+                        <li><a href="#">प्राइभेसी पोलिसी</a></li>
+                        <li><a href="#">सर्तहरू</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>सोशल मिडिया</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; २०२३ बाबुराम पन्थी. सर्वाधिकार सुरक्षित.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const nextEventDate = new Date('2023-09-30T19:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = nextEventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
         }
-      });
-    });
-
-    // Timeline reveal on scroll
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(ent=>{
-        if(ent.isIntersecting) ent.target.classList.add('visible');
-      });
-    }, {threshold: 0.15});
-    document.querySelectorAll('.timeline-item').forEach(el=>obs.observe(el));
-
-    // Album click -> open player modal
-    document.querySelectorAll('.album').forEach(album=>{
-      album.addEventListener('click', ()=>{
-        const track = album.dataset.track;
-        if(!track) { alert('Track URL missing — edit data-track placeholder.'); return; }
-        openPlayer(track, album.querySelector('.meta h3').innerText || 'Track');
-      });
-    });
-
-    function openPlayer(trackUrl, title){
-      const modal = document.getElementById('playerModal');
-      const content = document.getElementById('playerContent');
-      content.innerHTML = `
-        <h3>${title}</h3>
-        <audio controls preload="none" style="width:100%" src="${trackUrl}"></audio>
-      `;
-      modal.style.display = 'flex';
-    }
-    function closePlayer(){
-      const modal = document.getElementById('playerModal');
-      modal.style.display = 'none';
-      document.getElementById('playerContent').innerHTML = '';
-    }
-
-    // Lightbox
-    function openLightbox(src){
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightbox').classList.add('open');
-    }
-    function closeLightbox(){
-      document.getElementById('lightbox').classList.remove('open');
-      setTimeout(()=>document.getElementById('lightboxImg').src='',200);
-    }
-
-    // Simple contact form (client-side only). Instead of backend, we show success and optionally mailto.
-    function submitForm(e){
-      e.preventDefault();
-      // Instruct users to replace with a Formspree/Google Forms or server endpoint if they want real emails.
-      document.getElementById('formResult').style.display = 'block';
-      document.getElementById('bookingForm').reset();
-    }
-
-    // Countdown (replace with next event date)
-    // Replace the targetDate with the next event date in "YYYY-MM-DDTHH:MM:SS" format
-    const targetDate = new Date("2025-07-20T19:00:00"); // <-- Replace with actual date/time
-    function updateCountdown(){
-      const now = new Date();
-      const diff = targetDate - now;
-      if(diff <= 0){ document.getElementById('countdown').innerText = 'अर्को कार्यक्रम चलिरहेको छ / सम्पन्न'; return; }
-      const days = Math.floor(diff/86400000);
-      const hrs = Math.floor((diff%86400000)/3600000);
-      const mins = Math.floor((diff%3600000)/60000);
-      const secs = Math.floor((diff%60000)/1000);
-      document.getElementById('countdown').innerText = `${days} दिन ${hrs} : ${mins} : ${secs}`;
-    }
-    setInterval(updateCountdown,1000);
-    updateCountdown();
-
-    // Footer year
-    document.getElementById('year').innerText = new Date().getFullYear();
-
-    // Accessibility: keyboard close for lightbox/modal
-    document.addEventListener('keydown', e=>{
-      if(e.key === 'Escape'){ closeLightbox(); closePlayer(); }
-    });
-
-    // Progressive enhancement note: audio tags use preload="none" and will not autoplay.
-  </script>
-
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Form submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('धन्यवाद! तपाईंको सन्देश पठाइएको छ। हामी चाँडै नै तपाईंसम्पर्क गर्नेछौं।');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
