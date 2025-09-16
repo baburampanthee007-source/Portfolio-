@@ -1306,64 +1306,65 @@ function changeVideo(videoID, title){
     </div>
 </section>
 
-    <!-- Events Section -->
-    <section id="events" class="events">
-        <div class="container">
-            <div class="section-title">
-                <h2>आगामी कार्यक्रमहरू</h2>
-            </div>
-            
-            <div class="events-container">
-                <div class="upcoming-events">
-                    <!-- Event 1 -->
-                    <div class="event-card fade-in">
-                        <div class="event-date">२०२३ सेप्टेम्बर ३०</div>
-                        <h3 class="event-title">काठमाडौं कन्सर्ट</h3>
-                        <p>तुंडिखेल मैदान, काठमाडौं</p>
-                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
-                    </div>
-                    
-                    <!-- Event 2 -->
-                    <div class="event-card fade-in">
-                        <div class="event-date">२०२३ अक्टोबर १५</div>
-                        <h3 class="event-title">पोखरा कन्सर्ट</h3>
-                        <p>पोखरा रङ्गशाला, पोखरा</p>
-                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
-                    </div>
-                    
-                    <!-- Event 3 -->
-                    <div class="event-card fade-in">
-                        <div class="event-date">२०२३ नोभेम्बर ५</div>
-                        <h3 class="event-title">चितवन कन्सर्ट</h3>
-                        <p>गaindakot मैदान, भरतपुर</p>
-                        <a href="#" class="btn">टिकट किन्नुहोस्</a>
-                    </div>
-                </div>
-                
-                <div class="countdown fade-in">
-                    <h3 class="countdown-title">अर्को कार्यक्रममा</h3>
-                    <div class="countdown-timer">
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">दिन</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">घण्टा</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">मिनेट</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">सेकेन्ड</div>
-                        </div>
+   <!-- Professional Experience / Buddha Air Section -->
+<section id="events" class="events" style="background:#f7f7f7; padding:60px 0;">
+    <div class="container">
+        <div class="section-title" style="text-align:center; margin-bottom:50px;">
+            <h2 style="font-size:2.8rem; color:#FF7F00; font-weight:700;">व्यावसायिक अनुभव</h2>
+            <p style="font-size:1.1rem; color:#555;">Baburam Panthee – Chief Operating Officer, Buddha Air</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Timeline Item -->
+            <div class="timeline-item fade-in" style="position:relative; margin-bottom:50px;">
+                <div class="timeline-icon" style="background:#FF7F00; width:20px; height:20px; border-radius:50%; position:absolute; left:-10px; top:10px;"></div>
+                <div class="timeline-content" 
+                     style="background:#fff; padding:25px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <h3 style="color:#FF7F00; font-size:1.5rem; margin-bottom:10px;">Chief Operating Officer (COO)</h3>
+                    <span style="color:#888; font-size:0.9rem;">२०२३ – Present | Buddha Air Pvt. Ltd., ललितपुर, नेपाल</span>
+                    <p style="margin-top:15px; color:#555; line-height:1.6;">
+                        बाबुराम पन्थी बुद्ध एयरको संचालन प्रमुख (COO) हुन्। उहाँले कम्पनीको दैनिक संचालन, सुरक्षा मापदण्ड, कर्मचारी व्यवस्थापन, 
+                        र साझेदारी विकास जस्ता जिम्मेवारीहरू सम्हाल्नुहुन्छ। उहाँको नेतृत्वमा, बुद्ध एयरले नयाँ गन्तव्यहरू थप्दै, ग्राहक अनुभव सुधार गर्दै, 
+                        र हवाई सेवा विस्तार गर्दै आएको छ।
+                    </p>
+                    <!-- Buddha Air Image -->
+                    <div class="timeline-img" style="margin-top:20px; overflow:hidden; border-radius:12px;">
+                        <img src="https://www.buddhaair.com/wp-content/uploads/2019/09/buddha-air-plane.jpg" 
+                             alt="Buddha Air" 
+                             style="width:100%; transition: transform 0.5s; border: 3px solid #FF7F00;">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- CSS Animations -->
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.timeline-img img:hover {
+    transform: scale(1.05);
+}
+</style>
+
 
     <!-- News Section -->
     <section id="news" class="news">
