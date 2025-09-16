@@ -1098,119 +1098,101 @@
         </div>
     </section>
 
-   <!-- Music Section -->
+ <!-- Music Section -->
 <section id="music" class="music">
   <div class="container">
     <div class="section-title">
       <h2>मेरो संगीत</h2>
     </div>
-
+    
     <div class="albums">
       <!-- Album 1 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a.jpg" alt="Album 1">
+          <img src="a.jpg" alt="Album 1" class="animated-border">
         </div>
         <div class="album-info">
-          <h3 class="album-title">भुपु मायामा </h3>
+          <h3 class="album-title">भुपु मायामा</h3>
           <div class="album-year">२००८</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
 
       <!-- Album 2 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a2.jpg" alt="Album 2">
+          <img src="a2.jpg" alt="Album 2" class="animated-border">
         </div>
         <div class="album-info">
           <h3 class="album-title">गुल्मीको सान</h3>
           <div class="album-year">२०१०</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
 
       <!-- Album 3 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a3.jpg" alt="Album 3">
+          <img src="a3.jpg" alt="Album 3" class="animated-border">
         </div>
         <div class="album-info">
           <h3 class="album-title">झुक्कायो चोलीले</h3>
           <div class="album-year">२०१४</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
 
       <!-- Album 4 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a4.jpg" alt="Album 4">
+          <img src="a4.jpg" alt="Album 4" class="animated-border">
         </div>
         <div class="album-info">
           <h3 class="album-title">मापसे</h3>
           <div class="album-year">२०१८</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
 
       <!-- Album 5 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a5.jpg" alt="Album 5">
+          <img src="a5.jpg" alt="Album 5" class="animated-border">
         </div>
         <div class="album-info">
           <h3 class="album-title">आमा तिमी</h3>
           <div class="album-year">२०२०</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
 
       <!-- Album 6 -->
       <div class="album-card fade-in">
         <div class="album-img">
-          <img src="a6.jpg" alt="Album 6">
+          <img src="a6.jpg" alt="Album 6" class="animated-border">
         </div>
         <div class="album-info">
           <h3 class="album-title">तीनखुट्टे दोभान</h3>
           <div class="album-year">२०२४</div>
-          <div class="album-links">
-            <a href="#"><i class="fas fa-play-circle"></i></a>
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+<!-- CSS for animated border -->
+<style>
+.album-img {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.animated-border {
+  width: 100%;
+  display: block;
+  border: 4px solid transparent;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+}
+.animated-border:hover {
+  border-color: #FF7F00; /* Orange border */
+  transform: scale(1.05);
+}
+</style>
 
 
       <!-- Videos Section -->
